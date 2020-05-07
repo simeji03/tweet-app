@@ -1,7 +1,16 @@
 ja:
   activerecord:
     models:
-      post: ユーザー
+      post: 投稿
     attributes:
       post:
         content: 投稿の内容
+        
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
