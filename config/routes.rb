@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   get "/users" => "users#index"
   get "/users/:id" => "users#show"
   get "/users/:id/edit" => "users#edit"
-  post "users/:id/update" => "users#update"
+  post "/users/:id/update" => "users#update"
+  get "/users/:id/likes" => "users#likes"
   
   get "/posts" => "posts#index"
   get "/posts/new" =>"posts#new"
@@ -19,5 +20,8 @@ Rails.application.routes.draw do
   get "/posts/:id/edit" => "posts#edit"
   post "/posts/:id/update" => "posts#update"
   post "/posts/:id/destroy" => "posts#destroy"
+  
+  post "/likes/:post_id/create" => "likes#create"
+  post "/likes/:post_id/destroy" => "likes#destroy"
   
 end
