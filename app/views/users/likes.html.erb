@@ -4,7 +4,7 @@
       <img src="/user_images/<%= @user.image_name %>">
       <h2><%= @user.name %></h2>
       <p><%= @user.email %></p>
-      <% if @current_user == @user.id %>
+      <% if @current_user.id == @user.id %>
         <%= link_to("編集", "/users/#{@user.id}/edit") %>
       <% end %>
     </div>
