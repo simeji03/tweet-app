@@ -1,6 +1,7 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "./variables";
 
 /* reset ================================ */
 * {
@@ -42,7 +43,7 @@ form input[type="submit"] {
 /* 共通レイアウト ================================ */
 body {
   color: #2d3133;
-  background-color: #3ecdc6;
+  // background-color: #3ecdc6;
   margin: 0;
   min-height: 1vh;
 }
@@ -68,8 +69,14 @@ body {
 header {
   height: 64px;
   position: absolute;
+  position: fixed;
   z-index: 1;
   width: 100%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+header:not(.home-index) {
+  background-color: $base-color;
 }
 
 .header-logo {
@@ -127,7 +134,7 @@ header {
   height: auto;
   min-height: 100%;
   color: white;
-  background-color: #3ecdc6;
+  background-color: $base-color;
   background-repeat: no-repeat;
   background-position: center 50%;
   background-size: cover;
@@ -155,7 +162,7 @@ header {
   padding: 180px 8% 0;
   height: 100vh;
   color: white;
-  background-color: #3ecdc6;
+  background-color: $base-color;
 }
 
 .about-main h2 {
@@ -214,7 +221,7 @@ header {
 }
 
 .form input[type="submit"] {
-  background-color: #3ecdc6;
+  background-color: $base-color;
   color: white;
   cursor: pointer;
   font-weight: 300;
@@ -235,10 +242,11 @@ header {
 .flash {
   padding: 10px 0;
   color: white;
-  background: rgb(251, 170, 88);
+  background: #FBAA58;
   text-align: center;
   position: absolute;
   top: 64px;
+  position: fixed;
   z-index: 10;
   width: 100%;
   border-radius: 0 0 2px 2px;

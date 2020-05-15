@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <header>
+    <header class=<%= "#{controller.controller_name}-#{controller.action_name}" %>>
       <div class="header-logo">
         <% if @current_user %>
           <%= link_to("TweetApp", "/posts") %>

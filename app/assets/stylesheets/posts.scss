@@ -1,3 +1,5 @@
+@import "./variables";
+
 /* posts/index ================================ */
 .posts-index-item {
   padding: 20px 30px;
@@ -19,7 +21,7 @@
 }
 
 .post-user-name a:hover {
-  color: #3ecdc6;
+  color: $base-color;
 }
 
 .post-left {
