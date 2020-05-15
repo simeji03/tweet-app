@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post = Post.new(content: params[:content], user_id: @current_user.id)
+    @post = Post.new(content: params[:posts][:content], user_id: @current_user.id)
     if @post.save
       flash[:notice] = "新しく投稿しました"
       redirect_to "/posts"
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   
   def update
     @post = Post.find_by(id: params[:id])
-    @post.content = params[:content]
+    @post.content = params[:posts][:content]
     if @post.save
       flash[:notice] = "投稿を編集しました"
       redirect_to "/posts"

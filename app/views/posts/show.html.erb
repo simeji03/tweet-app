@@ -2,10 +2,10 @@
   <div class="container">
     <div class="posts-show-item">
       <div class="post-user-name">
-        <img src=<%= "/user_images/#{@user.image_name}" %>>
+        <%= image_tag "/user_images/#{@user.image_name}" %>
         <%= link_to(@user.name, "/users/#{@user.id}") %>
       </div>
-      <p><%= @post.content %></p>
+      <p><%= line_break(@post.content) %></p>
       <div class="post-time">
         <%= @post.created_at.to_s(:datetime_jp) %>
       </div>

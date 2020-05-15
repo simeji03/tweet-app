@@ -17,10 +17,10 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(
-      name: params[:name],
-      email: params[:email],
+      name: params[:users][:name],
+      email: params[:users][:email],
       image_name: "default_user.jpg",
-      password: params[:password]
+      password: params[:users][:password]
     )
     if @user.save
       session[:user_id] = @user.id
@@ -37,11 +37,14 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find_by(id: params[:id])
-    @user.name = params[:name]
-    @user.email = params[:email]
-    if params[:image]
+    @user.name = params[:users][:name]
+    @user.email = params[:users][:email]
+    if params[:users][:password]
+      @user.password = params[:users][:password]
+    end
+    if params[:users][:image]
       @user.image_name = "#{@user.id}.jpg"
-      image = params[:image]
+      image = params[:users][:image]
       File.binwrite("public/user_images/#{@user.image_name}", image.read)
     end
     if @user.save
@@ -57,15 +60,15 @@ class UsersController < ApplicationController
   end
   
   def login
-    @user = User.find_by(email: params[:email])
-    if @user && @user.authenticate(params[:password])
+    @user = User.find_by(email: params[:users][:email])
+    if @user && @user.authenticate(params[:users][:password])
       session[:user_id] = @user.id
       flash[:notice] = "ログインしました"
       redirect_to "/posts"
     else
       @error_message = "メールアドレスまたはパスワードが間違っています"
-      @email = params[:email]
-      @password = params[:password]
+      @email = params[:users][:email]
+      @password = params[:users][:password]
       render("users/login_form")
     end
   end
