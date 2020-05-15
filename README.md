@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+お忙しい中、当アプリをご覧いただきありがとうございます。
+このアプリは、Twitterを模倣してRuby on Railsで制作したアプリになります。
+実装している主な機能は以下の通りです。
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+新規ユーザー登録
+ログイン、ログアウト
+ユーザー編集
+投稿、投稿一覧表示
+投稿の編集、削除
+いいね！機能
+各ユーザーごとの投稿、いいね一覧表示
