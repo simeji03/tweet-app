@@ -8,6 +8,7 @@
         </div>
         <div class="user-right">
           <%= link_to(user.name, "/users/#{user.id}") %>
+          <%= render "relationships/follow_button", user: user %>
         </div>
       </div>
     <% end %>

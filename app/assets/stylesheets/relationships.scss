@@ -1,0 +1,53 @@
+// Place all the styles related to the relationships controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.btn_follow {
+  font-size: 18px;
+  padding: .7em 3em;
+  display: inline-block;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  background: #4DA1FF;
+  border-radius: 10px;
+  color: #FFF;
+  overflow: hidden;
+}
+.btn_follow .span {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 0.3s;
+  -webkit-backface-visibility: hidden;
+  -moz-transition: all 0.3s;
+  -moz-backface-visibility: hidden;
+  transition: all 0.3s;
+  backface-visibility: hidden;
+}
+.btn_follow:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f07a";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  font-size: 120%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  left: 0;
+  top: -100%;
+}
+.btn_follow:hover .span{
+  webkit-transform: translateY(300%);
+  -moz-transform: translateY(300%);
+  -ms-transform: translateY(300%);
+  transform: translateY(300%);
+}
+.btn_follow:hover:before {
+  top: 10px;
+}
