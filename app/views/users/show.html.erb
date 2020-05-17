@@ -1,11 +1,17 @@
 <div class="main user-show">
   <div class="container">
-    <div class="user">
+    <% if @current_user.id == @user.id %>
+      <div class="user">
+    <% else %>
+      <div class="user" style="margin-bottom: 100px;">
+    <% end %>
       <%= image_tag "/user_images/#{@user.image_name}" %>
       <h2><%= @user.name %></h2>
       <p><%= @user.email %></p>
       <% if @current_user.id == @user.id %>
         <%= link_to("編集", "/users/#{@user.id}/edit") %>
+      <% else %>
+        <%= render "relationships/follow_button", user: @user %>
       <% end %>
     </div>
     <ul class="user-tabs">
