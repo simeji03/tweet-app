@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   def login_user
     if @current_user
       flash[:notice] = "すでにログインしています"
-      redirect_to "/posts"
+      redirect_to "/posts/follow"
     end
   end
 end

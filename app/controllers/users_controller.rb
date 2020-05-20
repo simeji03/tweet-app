@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "ユーザー登録が完了しました"
-      redirect_to "/posts"
+      redirect_to "/posts/follow"
     else
       render("users/new")
     end
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:users][:password])
       session[:user_id] = @user.id
       flash[:notice] = "ログインしました"
-      redirect_to "/posts"
+      redirect_to "/posts/follow"
     else
       @error_message = "メールアドレスまたはパスワードが間違っています"
       @email = params[:users][:email]
@@ -84,10 +84,20 @@ class UsersController < ApplicationController
     @likes = Like.where(user_id: @user.id)
   end
   
+  def followings
+    @user = User.find_by(id: params[:id])
+    @followings = @user.followings
+  end
+  
+  def followers
+    @user = User.find_by(id: params[:id])
+    @followers = @user.followers
+  end
+  
   def ensure_correct_user
     if @current_user.id != params[:id].to_i
       flash[:notice] = "権限がありません"
-      redirect_to "/posts"
+      redirect_to "/posts/follow"
     end
   end
 end

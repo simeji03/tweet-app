@@ -1,6 +1,4 @@
-// Place all the styles related to the relationships controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "./variables";
 
 /* relationships/_follow_button ================================ */
 .btn_follow {
@@ -21,14 +19,14 @@
 }
 
 .following .submit:nth-child(1) {
-  background-color: #4DA1FF;
-  border-color: #4DA1FF;
+  background-color: $base-color;
+  border-color: $base-color;
   color: #FFF;
 }
 .following .submit:nth-child(2) {
   background-color: #fff;
-  border: 2px solid #4DA1FF;
-  color: #4DA1FF;
+  border: 2px solid $base-color;
+  color: $base-color;
 }
 .following:hover .submit:nth-child(2) {
   display: none;
@@ -40,8 +38,8 @@
   color: #FFF;
 }
 .followed .submit:nth-child(2) {
-  background-color: #4DA1FF;
-  border-color: #4DA1FF;
+  background-color: $base-color;
+  border-color: $base-color;
   color: #FFF;
 }
 .followed:hover .submit:nth-child(2) {
@@ -49,13 +47,15 @@
 }
 
 /* 各ページフォローボタン調整 ================================ */
-.users-index .btn_follow .submit {
+.users-index .btn_follow .submit,
+.user-show .follow_user .btn_follow .submit {
   top: 50%;
   right: 0;
   transform: translateY(-50%);
 }
 
-.user-show .btn_follow .submit {
+.user-show .user-button .btn_follow .submit {
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%,-50%);
 }

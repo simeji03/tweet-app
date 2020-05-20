@@ -7,7 +7,7 @@
       <div class="follow-bar">
         <ul class="user-follows">
           <li><%= link_to("フォロー中 #{@user.followings.count}", "/users/#{@user.id}/followings") %></li>
-          <li><%= link_to("フォロワー #{@user.followers.count}", "/users/#{@user.id}/followers") %></li>
+          <li class="active"><%= link_to("フォロワー #{@user.followers.count}", "/users/#{@user.id}/followers") %></li>
         </ul>
         <div class="user-button">
           <% if @current_user.id == @user.id %>
@@ -20,21 +20,20 @@
     </div>
     <ul class="user-tabs">
       <li><%= link_to("投稿", "/users/#{@user.id}") %></li>
-      <li class="active"><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+      <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
     </ul>
-    <% @likes.order(id: :desc).each do |like| %>
-      <% post = Post.find_by(id: like.post_id) %>
-      <div class="posts-index-item">
-        <div class="post-left">
-          <%= image_tag "/user_images/#{post.user.image_name}" %>
-        </div>
-        <div class="post-right">
-          <div class="post-user-name">
-            <%= link_to(post.user.name, "/users/#{post.user.id}") %>
+    <div class="follow_user">
+      <% @followers.each do |follower| %>
+        <div class="users-index-item">
+          <div class="user-left">
+            <%= image_tag "/user_images/#{follower.image_name}" %>
           </div>
-          <%= link_to(line_break(post.content), "/posts/#{post.id}") %>
+          <div class="user-right">
+            <%= link_to(follower.name, "/users/#{follower.id}") %>
+            <%= render "relationships/follow_button", user: follower %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -111,3 +111,22 @@
   opacity: 0.5;
 }
 
+/* posts/follow ================================ */
+.empty_users {
+  margin: 0 auto;
+}
+
+.empty_users p {
+  font-size: 30px;
+}
+
+.empty_users p a {
+  font-size: 16px;
+  color: darken($base-color, 20%);
+  text-decoration: underline;
+}
+
+.empty_users p a:hover {
+  color: $base-color;
+  text-decoration: none;
+}

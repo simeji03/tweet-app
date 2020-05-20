@@ -1,18 +1,22 @@
 <div class="main user-show">
   <div class="container">
-    <% if @current_user.id == @user.id %>
-      <div class="user">
-    <% else %>
-      <div class="user" style="margin-bottom: 100px;">
-    <% end %>
+    <div class="user">
       <%= image_tag "/user_images/#{@user.image_name}" %>
       <h2><%= @user.name %></h2>
       <p><%= @user.email %></p>
-      <% if @current_user.id == @user.id %>
-        <%= link_to("編集", "/users/#{@user.id}/edit") %>
-      <% else %>
-        <%= render "relationships/follow_button", user: @user %>
-      <% end %>
+      <div class="follow-bar">
+        <ul class="user-follows">
+          <li><%= link_to("フォロー中 #{@user.followings.count}", "/users/#{@user.id}/followings") %></li>
+          <li><%= link_to("フォロワー #{@user.followers.count}", "/users/#{@user.id}/followers") %></li>
+        </ul>
+        <div class="user-button">
+          <% if @current_user.id == @user.id %>
+            <%= link_to("編集", "/users/#{@user.id}/edit") %>
+          <% else %>
+            <%= render "relationships/follow_button", user: @user %>
+          <% end %>
+        </div>
+      </div>
     </div>
     <ul class="user-tabs">
       <li class="active"><%= link_to("投稿", "/users/#{@user.id}") %></li>

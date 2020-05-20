@@ -50,7 +50,8 @@
 }
 
 /* users/show ================================ */
-.user-show {
+.user-show,
+.user-follow {
   text-align: center;
 }
 
@@ -90,8 +91,37 @@
   padding: 0 6px 0 8px;
 }
 
+.follow-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+  // padding: 15px 10px;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 2px 6px #c1ced7;
+}
+
+.user-follows {
+  flex: 2;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.user-follows li a {
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  padding: 16px 30px;
+}
+
+.user-button {
+  flex: 1;
+}
+
 .user-tabs {
-  margin-top: 40px;
+  // margin-top: 40px;
   background-color: white;
   overflow: hidden;
   box-shadow: 0 2px 6px #c1ced7;
@@ -101,11 +131,13 @@
   float: left;
 }
 
-.user-tabs li.active {
+.user-tabs li.active,
+.user-follows li.active {
   border-bottom: 2px solid $base-color;
 }
 
-.user-tabs li.active a {
+.user-tabs li.active a,
+.user-follows li.active a {
   color: #57575f;
 }
 
