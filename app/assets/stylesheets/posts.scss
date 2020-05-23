@@ -74,6 +74,27 @@
   margin-bottom: 10px;
 }
 
+.post-show-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-icons {
+  display: flex;
+}
+
+.post-icons-item {
+  margin-right: 15px;
+}
+
+.retweet-btn {
+  color: #8899a6;
+}
+
+.retweet-btn-unretweet {
+  color: #77B255;
+}
+
 .like-btn {
   color: #8899a6;
 }
@@ -82,19 +103,22 @@
   color: #ff2581;
 }
 
-.posts-show-item .fa {
+.posts-show-item .fa,
+.posts-show-item .fas {
   font-size: 16px;
-  margin-right: 3px;
+  // margin-right: 2px;
 }
 
 .post-menus {
-  float: right;
 }
 
 .post-menus a, .post-menus input {
   color: #8899a6;
   text-decoration: underline;
   font-size: 14px;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 /* posts/new ================================ */

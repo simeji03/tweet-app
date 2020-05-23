@@ -16,6 +16,7 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     @user = @post.user
     @likes_count = Like.where(post_id: @post.id).count
+    @retweets_count = Retweet.where(post_id: @post.id).count
   end
   
   def new

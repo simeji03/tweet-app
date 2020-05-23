@@ -17,6 +17,8 @@ class User < ApplicationRecord
   # reverse_of_relationshipsテーブルを介してuserモデルからuser_idを集めることをfollowersと定義する
   has_many :followers, through: :reverse_of_relationships, source: :user
   # ==============================================================================================
+  has_many :retweets
+  has_many :retweet_posts, through: :retweets, source: :post
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :name, {presence: true}

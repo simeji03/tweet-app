@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   post "/likes/:post_id/create" => "likes#create"
   post "/likes/:post_id/destroy" => "likes#destroy"
   
+  post "/retweets/:post_id/create" => "retweets#create"
+  post "/retweets/:post_id/destroy" => "retweets#destroy"
+  
   resources :relationships, only: [:create, :destroy]
   
 end
