@@ -8,6 +8,12 @@
     <% else %>
       <% @posts.each do |post| %>
         <div class="posts-index-item">
+          <% unless post.retweets.empty? %>
+            <div class="retweet-user">
+              <!--retweetテーブルからpostに対応するpost_idを探し、対応するユーザー名を表示する-->
+              <%= link_to("#{User.order(created_at: :desc).joins(:retweets).find_by(retweets: {post_id: post.id}).name}さんがリツイート", "/users/#{User.order(created_at: :desc).joins(:retweets).find_by(retweets: {post_id: post.id}).id}") %>
+            </div>
+          <% end %>
           <div class="post-left">
             <%= image_tag "/user_images/#{post.user.image_name}" %>
           </div>

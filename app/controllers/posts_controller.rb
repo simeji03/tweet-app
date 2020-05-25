@@ -8,8 +8,14 @@ class PostsController < ApplicationController
   
   def follow
     @users = @current_user.followings
-    posts = Post.where(user_id: @users) + @current_user.posts
-    @posts = posts.sort_by{|post| post.created_at}.reverse
+    # フォローしているuserのidからretweetレコードを取得
+    @retweets = Retweet.where(user_id: @users.pluck(:id))
+    # retweetレコードを元にフォローしているユーザーがリツイートしているpostを取得
+    @retweet_posts = Post.where(id: @retweets.pluck(:post_id))
+    # フォローしているuserのpostとリツイートしたpost、自分のpostを取得
+    posts = Post.where(user_id: @users.pluck(:id)).or(@current_user.posts).or(@retweet_posts)
+    # 取得したpostsをupdated_atの新しい順に並べ替える
+    @posts = posts.sort_by{|post| post.updated_at}.reverse
   end
   
   def show

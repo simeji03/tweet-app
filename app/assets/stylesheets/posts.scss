@@ -154,3 +154,11 @@
   color: $base-color;
   text-decoration: none;
 }
+
+.retweet-user {
+  margin: -10px 0 -5px calc(10% + 25px);
+  a {
+    font-size: 12px;
+    color: #afb6bf;
+  }
+}
