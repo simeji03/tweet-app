@@ -43,7 +43,6 @@ form input[type="submit"] {
 /* 共通レイアウト ================================ */
 body {
   color: #2d3133;
-  // background-color: #3ecdc6;
   margin: 0;
   min-height: 1vh;
 }
@@ -67,11 +66,12 @@ body {
 
 /* ヘッダー ================================ */
 header {
-  height: 64px;
-  position: absolute;
   position: fixed;
-  z-index: 1;
+  left: 0;
+  top: 0;
   width: 100%;
+  height: 64px;
+  z-index: 20;
 }
 
 header:not(.home-index):not(.home-about) {
@@ -124,6 +124,111 @@ header:not(.home-index):not(.home-about) {
   font-size: 13px;
 }
 
+@media screen and (max-width:768px) {
+  .header-menus {
+    display: none;
+  }
+}
+
+/* ヘッダードロワーメニュー ================================ */
+.global-nav {
+  position: fixed;
+  right: -320px; /* これで隠れる */
+  top: 0;
+  width: 300px; /* スマホに収まるくらい */
+  height: 100vh;
+  padding-top: 64px;
+  background-color: $base-color;
+  transition: all .6s;
+  z-index: 200;
+  overflow-y: auto; /* メニューが多くなったらスクロールできるように */
+}
+.hamburger {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px; /* クリックしやすいようにちゃんと幅を指定する */
+  height: 64px; /* クリックしやすいようにちゃんと高さを指定する */
+  cursor: pointer;
+  z-index: 300;
+}
+.global-nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.global-nav__item {
+  text-align: center;
+  padding: 0 14px;
+}
+.global-nav__item a {
+  display: block;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  text-decoration: none;
+  color: #fff;
+}
+.global-nav__item a:hover {
+  background-color: lighten($base-color,10%);
+}
+.hamburger__line {
+  position: absolute;
+  right: 20px;
+  width: 30px;
+  height: 2px;
+  border-radius: 20%;
+  background-color: #fff;
+  transition: all .6s;
+}
+.hamburger__line--1 {
+  top: 22px;
+}
+.hamburger__line--2 {
+  top: 32px;
+}
+.hamburger__line--3 {
+  top: 42px;
+}
+.black-bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: #000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .6s;
+  cursor: pointer;
+}
+/* 表示された時用のCSS */
+.nav-open .global-nav {
+  right: 0;
+}
+.nav-open .black-bg {
+  opacity: .8;
+  visibility: visible;
+}
+.nav-open .hamburger__line--1 {
+  transform: rotate(45deg);
+  top: 32px;
+}
+.nav-open .hamburger__line--2 {
+  width: 0;
+  left: 50%;
+}
+.nav-open .hamburger__line--3 {
+  transform: rotate(-45deg);
+  top: 32px;
+}
+
+@media screen and (min-width:767px) {
+  .hamburger {
+    display: none;
+  }
+}
+
 /* top ================================ */
 .top-main {
   padding: 200px 0 100px;
@@ -157,6 +262,27 @@ header:not(.home-index):not(.home-about) {
   font-size: 24px;
 }
 
+@media screen and (max-width:991px) {
+  .top-main h2 {
+    font-size: 50px;
+  }
+}
+
+@media screen and (max-width:767px) {
+  .top-main h2 {
+    font-size: 35px;
+  }
+}
+  
+@media screen and (max-width:479px) {
+  .top-main h2 {
+    font-size: 23px;
+  }
+  .top-main p {
+    font-size: 16px;
+  }
+}
+
 /* about ================================ */
 .about-main {
   padding: 180px 8% 0;
@@ -169,15 +295,35 @@ header:not(.home-index):not(.home-about) {
   font-size: 64px;
   font-weight: 500;
   line-height: 1.4;
+  margin-bottom: 20px;
 }
 
 .about-main p {
   font-weight: 200;
   font-size: 20px;
+  margin-bottom: 40px;
 }
 
 .about-img {
-  width: 84%;
+  width: 100%;
+}
+
+@media screen and (max-width:767px) {
+  .about-main h2 {
+    font-size: 50px;
+  }
+  .about-main p {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width:479px) {
+  .about-main h2 {
+    font-size: 35px;
+  }
+  .about-main p {
+    font-size: 14px;
+  }
 }
 
 /* フォーム================================ */
@@ -236,6 +382,15 @@ header:not(.home-index):not(.home-about) {
   content: '';
   display: table;
   clear: both;
+}
+
+@media screen and (max-width:479px) {
+  .form-heading {
+    font-size: 30px;
+  }
+  .form-body {
+    padding: 20px;
+  }
 }
 
 /* フラッシュ ================================ */

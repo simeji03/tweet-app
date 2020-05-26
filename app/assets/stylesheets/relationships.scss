@@ -46,6 +46,13 @@
   display: none;
 }
 
+@media screen and (max-width:479px) {
+  .btn_follow .submit {
+    padding: .3em .5em;
+    width: 100px;
+  }
+}
+
 /* 各ページフォローボタン調整 ================================ */
 .users-index .btn_follow .submit,
 .user-show .follow_user .btn_follow .submit {

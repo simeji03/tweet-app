@@ -3,7 +3,7 @@
   <head>
     <title>TweetApp</title>
     <%= csrf_meta_tags %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/4a0b976a7e.js" crossorigin="anonymous"></script>
@@ -47,6 +47,28 @@
           </li>
         <% end %>
       </ul>
+      
+      <nav class="global-nav">
+        <ul class="global-nav__list">
+          <% if @current_user %>
+            <li class="global-nav__item"><%= link_to(@current_user.name, "/users/#{@current_user.id}") %></li>
+            <li class="global-nav__item"><%= link_to("投稿一覧", "/posts") %></li>
+            <li class="global-nav__item"><%= link_to("新規投稿", "/posts/new") %></li>
+            <li class="global-nav__item"><%= link_to("ユーザー一覧", "/users") %></li>
+            <li class="global-nav__item"><%= link_to("ログアウト", "/logout", method: :post) %></li>
+          <% else %>
+            <li class="global-nav__item"><%= link_to("TweetAppとは", "/about") %></li>
+            <li class="global-nav__item"><%= link_to("新規登録", "/signup") %></li>
+            <li class="global-nav__item"><%= link_to("ログイン", "/login") %></li>
+          <% end %>
+        </ul>
+      </nav>
+      <div class="hamburger" id="js-hamburger">
+        <span class="hamburger__line hamburger__line--1"></span>
+        <span class="hamburger__line hamburger__line--2"></span>
+        <span class="hamburger__line hamburger__line--3"></span>
+      </div>
+      <div class="black-bg" id="js-black-bg"></div>
     </header>
     <% if flash[:notice] %>
       <div class="flash">
@@ -54,5 +76,6 @@
       </div>
     <% end %>
     <%= yield %>
+    <%= javascript_include_tag('application.js') %>
   </body>
 </html>

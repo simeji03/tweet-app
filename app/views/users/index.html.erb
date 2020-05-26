@@ -7,7 +7,9 @@
           <%= image_tag "/user_images/#{user.image_name}" %>
         </div>
         <div class="user-right">
-          <%= link_to(user.name, "/users/#{user.id}") %>
+          <div class="user-name">
+            <%= link_to(user.name, "/users/#{user.id}") %>
+          </div>
           <%= render "relationships/follow_button", user: user %>
         </div>
       </div>
