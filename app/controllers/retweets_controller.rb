@@ -5,7 +5,7 @@ class RetweetsController < ApplicationController
     @retweet.save
     @post = Post.find(@retweet.post_id)
     @post.update_attribute(:updated_at, Time.now)
-    redirect_to "/posts/#{params[:post_id]}"
+    redirect_back(fallback_location: root_path)
   end
   
   def destroy
@@ -13,6 +13,6 @@ class RetweetsController < ApplicationController
     @post = Post.find(@retweet.post_id)
     @post.update_attribute(:updated_at, Time.now)
     @retweet.destroy
-    redirect_to "/posts/#{params[:post_id]}"
+    redirect_back(fallback_location: root_path)
   end
 end

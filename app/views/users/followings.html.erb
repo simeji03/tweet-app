@@ -11,7 +11,9 @@
         </ul>
         <div class="user-button">
           <% if @current_user.id == @user.id %>
-            <%= link_to("編集", "/users/#{@user.id}/edit") %>
+            <%= link_to("/users/#{@user.id}/edit") do %>
+              <i class="fas fa-cog"></i>
+            <% end %>
           <% else %>
             <%= render "relationships/follow_button", user: @user %>
           <% end %>

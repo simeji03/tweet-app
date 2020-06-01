@@ -22,6 +22,34 @@
               <%= link_to(post.user.name, "/users/#{post.user.id}") %>
             </div>
             <%= link_to(line_break(post.content), "/posts/#{post.id}") %>
+            <div class="post-icons">
+              <% likes_count = Like.where(post_id: post.id).count %>
+              <% retweets_count = Retweet.where(post_id: post.id).count %>
+              <div class="post-icons-item">
+                <% if Retweet.find_by(user_id: @current_user.id, post_id: post.id) %>
+                  <%= link_to("/retweets/#{post.id}/destroy", method: :post) do %>
+                    <span class="fas fa-retweet retweet-btn-unretweet"></span>
+                  <% end %>
+                <% else %>
+                  <%= link_to("/retweets/#{post.id}/create", method: :post) do %>
+                    <span class="fas fa-retweet retweet-btn"></span>
+                  <% end %>
+                <% end %>
+                <%= retweets_count %>
+              </div>
+              <div class="post-icons-item">
+                <% if Like.find_by(user_id: @current_user.id, post_id: post.id) %>
+                  <%= link_to("/likes/#{post.id}/destroy", method: :post) do %>
+                    <span class="fa fa-heart like-btn-unlike"></span>
+                  <% end %>
+                <% else %>
+                  <%= link_to("/likes/#{post.id}/create", method: :post) do %>
+                    <span class="fa fa-heart like-btn"></span>
+                  <% end %>
+                <% end %>
+                <%= likes_count %>
+              </div>
+            </div>
           </div>
         </div>
       <% end %>
